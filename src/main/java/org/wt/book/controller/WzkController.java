@@ -47,7 +47,6 @@ public class WzkController {
         return "0000";
     }
 
-
     @RequestMapping("sw")
     @ResponseBody
     public String sw(){
