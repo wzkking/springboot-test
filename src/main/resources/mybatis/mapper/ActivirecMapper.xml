@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wt.book.dao.ActivirecMapper" >
+    <resultMap id="BaseResultMap" type="org.wt.book.model.Activirec" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="userId" property="userId" jdbcType="INTEGER" />
+        <result column="titleId" property="titleId" jdbcType="INTEGER" />
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="award" property="award" jdbcType="INTEGER" />
+        <result column="str1" property="str1" jdbcType="VARCHAR" />
+        <result column="str2" property="str2" jdbcType="VARCHAR" />
+        <result column="str3" property="str3" jdbcType="VARCHAR" />
+        <result column="str4" property="str4" jdbcType="VARCHAR" />
+        <result column="str5" property="str5" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    id, userId, titleId, createTime, award, str1, str2, str3, str4, str5
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from activirec
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activirec
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="org.wt.book.model.Activirec" >
+    insert into activirec (id, userId, titleId, 
+      createTime, award, str1, 
+      str2, str3, str4, str5
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{titleId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{award,jdbcType=INTEGER}, #{str1,jdbcType=VARCHAR}, 
+      #{str2,jdbcType=VARCHAR}, #{str3,jdbcType=VARCHAR}, #{str4,jdbcType=VARCHAR}, #{str5,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="org.wt.book.model.Activirec" >
+        insert into activirec
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="userId != null" >
+                userId,
+            </if>
+            <if test="titleId != null" >
+                titleId,
+            </if>
+            <if test="createTime != null" >
+                createTime,
+            </if>
+            <if test="award != null" >
+                award,
+            </if>
+            <if test="str1 != null" >
+                str1,
+            </if>
+            <if test="str2 != null" >
+                str2,
+            </if>
+            <if test="str3 != null" >
+                str3,
+            </if>
+            <if test="str4 != null" >
+                str4,
+            </if>
+            <if test="str5 != null" >
+                str5,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null" >
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="titleId != null" >
+                #{titleId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="award != null" >
+                #{award,jdbcType=INTEGER},
+            </if>
+            <if test="str1 != null" >
+                #{str1,jdbcType=VARCHAR},
+            </if>
+            <if test="str2 != null" >
+                #{str2,jdbcType=VARCHAR},
+            </if>
+            <if test="str3 != null" >
+                #{str3,jdbcType=VARCHAR},
+            </if>
+            <if test="str4 != null" >
+                #{str4,jdbcType=VARCHAR},
+            </if>
+            <if test="str5 != null" >
+                #{str5,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.wt.book.model.Activirec" >
+        update activirec
+        <set >
+            <if test="userId != null" >
+                userId = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="titleId != null" >
+                titleId = #{titleId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="award != null" >
+                award = #{award,jdbcType=INTEGER},
+            </if>
+            <if test="str1 != null" >
+                str1 = #{str1,jdbcType=VARCHAR},
+            </if>
+            <if test="str2 != null" >
+                str2 = #{str2,jdbcType=VARCHAR},
+            </if>
+            <if test="str3 != null" >
+                str3 = #{str3,jdbcType=VARCHAR},
+            </if>
+            <if test="str4 != null" >
+                str4 = #{str4,jdbcType=VARCHAR},
+            </if>
+            <if test="str5 != null" >
+                str5 = #{str5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.wt.book.model.Activirec" >
+    update activirec
+    set userId = #{userId,jdbcType=INTEGER},
+      titleId = #{titleId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      award = #{award,jdbcType=INTEGER},
+      str1 = #{str1,jdbcType=VARCHAR},
+      str2 = #{str2,jdbcType=VARCHAR},
+      str3 = #{str3,jdbcType=VARCHAR},
+      str4 = #{str4,jdbcType=VARCHAR},
+      str5 = #{str5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByUidAndTitleIdDesc" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from activirec
+        where userId = #{uid,jdbcType=INTEGER} and titleId = #{id,jdbcType=INTEGER}
+        ORDER BY createTime DESC limit 1
+    </select>
+    <select id="selectByUidAndTitleId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from activirec
+        where userId = #{uid,jdbcType=INTEGER}  and titleId = #{id,jdbcType=INTEGER}
+
+    </select>
+    <select id="selectByUserIdAndTitleId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from activirec
+        where userId = #{userId,jdbcType=INTEGER} and titleId = #{titleId,jdbcType=INTEGER}
+
+    </select>
+    <select id="selectByIdFri"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from activirec
+        where userId = #{userId,jdbcType=INTEGER} and str2 = #{phone,jdbcType=INTEGER}
+
+    </select>
+    <select id="countTitleFriend" resultMap="BaseResultMap">
+    select 
+    count(*)
+    from activirec
+    where userId = #{uid,jdbcType=INTEGER} and titleId = #{id,jdbcType=INTEGER} 
+      
+  </select>
+    <select id="sumAward" parameterType="java.lang.Integer" resultType="java.lang.Long">
+    select sum(award) from activirec
+    where userId = #{userId,jdbcType=INTEGER}
+  </select>
+    <select id="sumAwardByDate"  resultType="java.lang.Long">
+    select sum(award) from activirec
+    where userId = #{userId,jdbcType=INTEGER}
+    and createTime &gt;= #{date,jdbcType=TIMESTAMP}
+  </select>
+
+    <select id="myRank"  parameterType="java.lang.Integer" resultType="org.wt.book.model.Rank">
+     SELECT * FROM
+    (SELECT s.userId, @curRank := @curRank + 1 AS rank   
+    FROM (SELECT SUM(award) award,userId FROM`activirec`) s,(SELECT @curRank := 0) t
+    ORDER BY award DESC)alias_1
+    WHERE  userId = #{userId,jdbcType=INTEGER}
+  </select>
+    <select id="countUser"    resultType="java.lang.Integer">
+     select count(1) from (
+    select 
+    userId
+    from activirec
+    group by userId 
+    )alias_1 
+  </select>
+</mapper>
